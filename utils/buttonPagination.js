@@ -1,0 +1,101 @@
+const {
+	ActionRowBuilder,
+	ButtonBuilder,
+	ButtonStyle,
+	ComponentType,
+} = require('discord.js')
+
+module.exports = async (interaction, pages, time = 30 * 1000) => {
+	try {
+		if (!interaction || !pages || !pages.length > 0)
+			throw new Error('Invalid arguments')
+
+		await interaction.deferReply()
+
+		if (pages.length === 1) {
+			return await interaction.editReply({
+				embeds: pages,
+				components: [],
+				fetchReply: true,
+			})
+		}
+
+		const prev = new ButtonBuilder()
+			.setCustomId('prev')
+			.setEmoji('<:back1:1101798553577328721>')
+			.setStyle(ButtonStyle.Secondary)
+			.setDisabled(true)
+
+		const home = new ButtonBuilder()
+			.setCustomId('home')
+			.setEmoji('<:icons_generalinfo:1201104262399266826>')
+			.setStyle(ButtonStyle.Secondary)
+			.setDisabled(true)
+
+		const next = new ButtonBuilder()
+			.setCustomId('next')
+			.setEmoji('<:next1:1101798556563669092>')
+			.setStyle(ButtonStyle.Secondary)
+
+		const buttons = new ActionRowBuilder().addComponents([prev, home, next])
+		let index = 0
+
+		const msg = await interaction.editReply({
+			embeds: [pages[index]],
+			components: [buttons],
+			fetchReply: true,
+		})
+
+		const mc = await msg.createMessageComponentCollector({
+			componentType: ComponentType.Button,
+			time,
+		})
+
+		mc.on('collect', async i => {
+			if (i.user.id !== interaction.user.id)
+				return i.reply({
+					content: 'You are not allowed to do this!',
+					ephemeral: true,
+				})
+
+			await i.deferUpdate({})
+
+			if (i.customId === 'prev') {
+				if (index > 0) index--
+			} else if (i.customId === 'home') {
+				index = 0
+			} else if (i.customId === 'next') {
+				if (index < pages.length - 1) index++
+			}
+
+			if (index === 0) {
+				prev.setDisabled(true)
+				home.setDisabled(true)
+			} else {
+				prev.setDisabled(false)
+				home.setDisabled(false)
+			}
+
+			if (index === pages.length - 1) {
+				next.setDisabled(true)
+			} else {
+				next.setDisabled(false)
+			}
+
+			await msg.edit({
+				embeds: [pages[index]],
+				components: [buttons],
+			})
+
+			mc.resetTimer()
+
+			mc.on('end', async () => {
+				await msg.delete().catch(error => null)
+			})
+
+			return msg
+		})
+	} catch (err) {
+		console.log(err)
+	}
+}

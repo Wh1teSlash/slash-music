@@ -6,7 +6,8 @@ const {
 	AttachmentBuilder,
 } = require('discord.js')
 const ms = require('ms')
-const { generate } = require('spotify-card')
+const { Spotify } = require('canvafy')
+const sharp = require('sharp')
 
 module.exports = {
 	name: 'playerStart',
@@ -22,11 +23,20 @@ module.exports = {
 		if (player.loop === 'none') looped = 'Playing'
 		else looped = `Looped: ${player.loop}`
 
-		const image = await generate({
-			url: track.uri,
-		})
+		const spotify = await new Spotify()
+			.setAuthor(track.author)
+			.setTitle(track.title)
+			.setImage(track.thumbnail)
+			.setTimestamp(1000, parseInt(track.length))
+			.setBlur(5)
+			.setOverlayOpacity(0.7)
+			.build()
 
-		const attachment = new AttachmentBuilder(image, { name: 'card.png' })
+		const image = await sharp(spotify)
+			.resize(325, null, {
+				fit: 'inside',
+			})
+			.toBuffer()
 
 		const embed = new EmbedBuilder()
 			.setColor('Blurple')
@@ -110,7 +120,12 @@ module.exports = {
 			message
 				.edit({
 					embeds: [embed],
-					files: [attachment],
+					files: [
+						{
+							attachment: image,
+							name: `card.png`,
+						},
+					],
 				})
 				.then(x => player.data.set('message', x))
 		} else {
@@ -119,7 +134,12 @@ module.exports = {
 				?.send({
 					embeds: [embed],
 					components: [firstRow, secondRow],
-					files: [attachment],
+					files: [
+						{
+							attachment: image,
+							name: `card.png`,
+						},
+					],
 				})
 				.then(x => player.data.set('message', x))
 		}

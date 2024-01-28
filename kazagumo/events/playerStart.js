@@ -3,8 +3,10 @@ const {
 	ActionRowBuilder,
 	ButtonBuilder,
 	ButtonStyle,
+	AttachmentBuilder,
 } = require('discord.js')
 const ms = require('ms')
+const { generate } = require('spotify-card')
 
 module.exports = {
 	name: 'playerStart',
@@ -19,6 +21,12 @@ module.exports = {
 
 		if (player.loop === 'none') looped = 'Playing'
 		else looped = `Looped: ${player.loop}`
+
+		const image = await generate({
+			url: track.uri,
+		})
+
+		const attachment = new AttachmentBuilder(image, { name: 'card.png' })
 
 		const embed = new EmbedBuilder()
 			.setColor('Blurple')
@@ -43,7 +51,7 @@ module.exports = {
 					value: `<:1_:1100848601808244789> ${source}`,
 				},
 			])
-			.setImage(track.thumbnail)
+			.setImage('attachment://card.png')
 			.setFooter({
 				text: `Tracks in queue: ${player.queue.size} | Queue duration: ${ms(
 					player.queue.durationLength
@@ -102,6 +110,7 @@ module.exports = {
 			message
 				.edit({
 					embeds: [embed],
+					files: [attachment],
 				})
 				.then(x => player.data.set('message', x))
 		} else {
@@ -110,6 +119,7 @@ module.exports = {
 				?.send({
 					embeds: [embed],
 					components: [firstRow, secondRow],
+					files: [attachment],
 				})
 				.then(x => player.data.set('message', x))
 		}

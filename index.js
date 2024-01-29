@@ -3,6 +3,7 @@ require('dotenv/config')
 const { Client, GatewayIntentBits } = require('discord.js')
 const { Connectors } = require('shoukaku')
 const { Kazagumo, KazagumoTrack, Plugins } = require('kazagumo')
+const { ImgurClient } = require('imgur')
 const Spotify = require('kazagumo-spotify')
 const eventHandler = require('./handlers/eventHandler')
 const kazagumoHandler = require('./handlers/kazagumoHandler')
@@ -47,6 +48,10 @@ kazagumo.shoukaku.on('error', (name, error) =>
 )
 
 client.kazagumo = kazagumo
+client.imgur = new ImgurClient({
+	clientId: process.env.IMGUR_CLIENT_ID,
+	clientSecret: process.env.IMGUR_CLIENT_SECRET,
+})
 
 Promise.all([kazagumoHandler(client, kazagumo), eventHandler(client)])
 

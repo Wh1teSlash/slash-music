@@ -24,4 +24,6 @@ jobs:
           echo "${{ secrets.BOT_TOKEN }}" >> .env
           echo "${{ secrets.SPOTIFY_CLIENT_ID }}" >> .env
           echo "${{ secrets.SPOTIFY_SECRET_ID }}" >> .env
+          echo 'IMGUR_CLIENT_ID='${{ secrets.IMGUR_CLIENT_ID }}"' >> .env
+          echo 'IMGUR_CLIENT_SECRET="${{ secrets.IMGUR_CLIENT_SECRET }}"' >> .env
       - run: pm2 restart all

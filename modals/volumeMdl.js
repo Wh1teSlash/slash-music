@@ -29,6 +29,7 @@ module.exports = {
 						)} | Volume: ${player.volume * 100}%`,
 					}),
 				],
+				files: [],
 			})
 
 			interaction.deferUpdate()

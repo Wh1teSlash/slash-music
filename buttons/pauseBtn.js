@@ -75,6 +75,7 @@ module.exports = {
 					}),
 				],
 				components: [firstRow, secondRow],
+				files: [],
 			})
 
 			interaction.deferUpdate()
@@ -143,6 +144,7 @@ module.exports = {
 				}),
 			],
 			components: [firstRow, secondRow],
+			files: [],
 		})
 
 		interaction.deferUpdate()

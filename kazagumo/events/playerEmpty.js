@@ -5,5 +5,6 @@ module.exports = {
 
 		if (message) message.delete().catch(error => null)
 		player.destroy()
+		global.gc()
 	},
 }

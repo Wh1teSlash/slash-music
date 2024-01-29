@@ -7,7 +7,7 @@ module.exports = {
 	run: async (client, interaction) => {
 		const player = client.kazagumo.getPlayer(interaction.guild.id)
 
-		const prevTrack = player.getPrevious(false)
+		const prevTrack = player.getPrevious(true)
 		const currentTrack = player.queue.current
 
 		if (prevTrack[0] === currentTrack)

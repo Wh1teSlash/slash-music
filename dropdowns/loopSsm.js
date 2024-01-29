@@ -25,6 +25,7 @@ module.exports = {
 							}),
 						}),
 					],
+					files: [],
 				})
 			} else {
 				message.edit({
@@ -37,6 +38,7 @@ module.exports = {
 							}),
 						}),
 					],
+					files: [],
 				})
 			}
 

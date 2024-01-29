@@ -16,7 +16,7 @@ module.exports = {
 				ephemeral: true,
 			})
 
-		player.play(prevTrack[0])
+		player.play(prevTrack[1])
 
 		interaction.deferUpdate()
 	},

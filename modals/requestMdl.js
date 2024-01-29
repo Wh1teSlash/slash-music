@@ -114,11 +114,13 @@ module.exports = {
 			return interaction.reply({
 				embeds: [playlistEmbed],
 				ephemeral: true,
+				files: [],
 			})
 		else
 			return interaction.reply({
 				embeds: [trackEmbed],
 				ephemeral: true,
+				files: [],
 			})
 	},
 }

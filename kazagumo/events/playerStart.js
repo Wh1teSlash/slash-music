@@ -61,7 +61,7 @@ module.exports = {
 					value: `<:1_:1100848601808244789> ${source}`,
 				},
 			])
-			.setImage('attachment://card.png')
+			.setImage(`attachment://${track.title}.png`)
 			.setFooter({
 				text: `Tracks in queue: ${player.queue.size} | Queue duration: ${ms(
 					player.queue.durationLength
@@ -117,13 +117,22 @@ module.exports = {
 		const message = player.data.get('message')
 
 		if (message) {
+			if (message.embeds[0].image === track.title) {
+				message
+					.edit({
+						embeds: [embed],
+					})
+					.then(x => player.data.set('message', x))
+				return
+			}
+
 			message
 				.edit({
 					embeds: [embed],
 					files: [
 						{
 							attachment: image,
-							name: `card.png`,
+							name: `${track.title}.png`,
 						},
 					],
 				})

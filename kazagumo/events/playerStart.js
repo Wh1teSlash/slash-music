@@ -7,6 +7,20 @@ const {
 const ms = require('ms')
 const { Spotify } = require('canvafy')
 const sharp = require('sharp')
+const memoize = require('promise-memoize')
+
+const createSpotifyCard = async track => {
+	const spotify = await new Spotify()
+		.setAuthor(track.author)
+		.setTitle(track.title)
+		.setImage(track.thumbnail)
+		.setTimestamp(1000, parseInt(track.length))
+		.setBlur(5)
+		.setOverlayOpacity(0.7)
+		.build()
+
+	return spotify
+}
 
 module.exports = {
 	name: 'playerStart',
@@ -22,14 +36,11 @@ module.exports = {
 		if (player.loop === 'none') looped = 'Playing'
 		else looped = `Looped: ${player.loop}`
 
-		const spotify = await new Spotify()
-			.setAuthor(track.author)
-			.setTitle(track.title)
-			.setImage(track.thumbnail)
-			.setTimestamp(1000, parseInt(track.length))
-			.setBlur(5)
-			.setOverlayOpacity(0.7)
-			.build()
+		const memoizedCreateSpotifyCard = memoize(createSpotifyCard, {
+			maxAge: 15000,
+		})
+
+		const spotify = await memoizedCreateSpotifyCard(track)
 
 		const image = await sharp(spotify)
 			.resize(325, null, {

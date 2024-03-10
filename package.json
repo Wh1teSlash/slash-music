@@ -10,7 +10,7 @@
     "discord.js": "^14.14.1",
     "dotenv": "^16.4.1",
     "imgur": "^2.4.2",
-    "kazagumo": "^3.0.0",
+    "kazagumo": "^3.0.1",
     "kazagumo-spotify": "^2.0.1",
     "mongoose": "^8.1.1",
     "ms": "^2.1.3",

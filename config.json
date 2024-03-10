@@ -1,11 +1,11 @@
 {
-	"testServerId": "1041849869528215602",
-	"developersId": ["784852937276653618"],
-	"nodes": [
-		{
-			"name": "Main lavalink",
-			"url": "147.45.102.218:2333",
-			"auth": "youshallnotpass"
-		}
-	]
+  "testServerId": "1041849869528215602",
+  "developersId": ["784852937276653618"],
+  "nodes": [
+    {
+      "name": "Main lavalink",
+      "url": "80.90.189.44:2333",
+      "auth": "yourverystrongpassword"
+    }
+  ]
 }

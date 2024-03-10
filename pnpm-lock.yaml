@@ -21,8 +21,8 @@ dependencies:
     specifier: ^2.4.2
     version: 2.4.2
   kazagumo:
-    specifier: ^3.0.0
-    version: 3.0.0
+    specifier: ^3.0.1
+    version: 3.0.1
   kazagumo-spotify:
     specifier: ^2.0.1
     version: 2.0.1
@@ -838,7 +838,7 @@ packages:
   /kazagumo-spotify@2.0.1:
     resolution: {integrity: sha512-HKT38Hq/NZOXJHfAoonHYWlP5QYl29mIX/ZB6ipQyK9xwFcnnkXGFnFk3WkQUn6ND7t0X5mKbM9zwqQtjlb3/g==}
     dependencies:
-      kazagumo: 3.0.0
+      kazagumo: 3.0.1
       shoukaku: 4.0.1
       undici: 5.27.2
     transitivePeerDependencies:
@@ -846,8 +846,8 @@ packages:
       - utf-8-validate
     dev: false
 
-  /kazagumo@3.0.0:
-    resolution: {integrity: sha512-FOqhKf4dShm+bevqCkomRzuTV1Q+RaXaWQ9CWFsQ5qRit/+3jlFLI7D3Q4mJaktu5lojVzzZgIygvuwpjfSkCg==}
+  /kazagumo@3.0.1:
+    resolution: {integrity: sha512-I4eD7JOScqY+xtAE8O5M5d5/ro18wv4j9GHwNvQKW7yGL5eGlgy/LGgdlWCWg+webEtcagImYOIaH5x1c3poTw==}
     engines: {node: '>=16.5.0 <=20'}
     dependencies:
       events: 3.3.0

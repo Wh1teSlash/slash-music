@@ -1,4 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
+const { trusted } = require("mongoose");
 const ms = require("ms");
 
 module.exports = {
@@ -8,10 +9,29 @@ module.exports = {
     .addStringOption((option) =>
       option
         .setName("query")
-        .setDescription("Paste query or link to the song")
+        .setDescription("Paste query or link to the song.")
         .setRequired(true)
+        .setAutocomplete(true)
     )
     .toJSON(),
+  runAutocomplete: async (client, interaction) => {
+    const focusedValue = interaction.options.getFocused(true);
+
+    if (!focusedValue.value) return;
+
+    const results = await client.kazagumo.search(focusedValue.value, {
+      requester: interaction.user,
+    });
+
+    await interaction.respond(
+      results.tracks.map((r) => ({
+        name: `${
+          r.title.length > 100 ? r.title.slice(0, 97) + "..." : r.title
+        }`,
+        value: r.uri,
+      }))
+    );
+  },
   userPermissions: [],
   botPermissions: [],
   voiceOnly: true,

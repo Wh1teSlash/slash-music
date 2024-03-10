@@ -5,8 +5,6 @@ const {
   ButtonStyle,
 } = require("discord.js");
 const ms = require("ms");
-const { Spotify } = require("canvafy");
-const sharp = require("sharp");
 
 module.exports = {
   name: "playerStart",

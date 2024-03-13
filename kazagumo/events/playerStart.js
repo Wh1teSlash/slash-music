@@ -16,6 +16,10 @@ module.exports = {
       source = "<:spotify2:1101763629633765427>";
     else if (track.sourceName === "youtube")
       source = "<:ytb:1101768846693634138>";
+    else if (track.sourceName === "apple")
+      source = "<:MusicApple:1217501064031637544>";
+    else if (track.sourceName === "deezer")
+      source = "<:deezer:1217503058855198771>";
 
     if (player.loop === "none") looped = "Playing";
     else looped = `Looped: ${player.loop}`;

@@ -2,8 +2,10 @@ require("dotenv/config");
 
 const { Client, GatewayIntentBits } = require("discord.js");
 const { Connectors } = require("shoukaku");
-const { Kazagumo, KazagumoTrack, Plugins } = require("kazagumo");
+const { Kazagumo, Plugins } = require("kazagumo");
 const Spotify = require("kazagumo-spotify");
+const Deezer = require('kazagumo-deezer');
+const Apple = require('kazagumo-apple');
 const eventHandler = require("./handlers/eventHandler");
 const kazagumoHandler = require("./handlers/kazagumoHandler");
 const config = require("./config.json");
@@ -34,6 +36,14 @@ const kazagumo = new Kazagumo(
         albumPageLimit: 1,
         searchLimit: 10,
         searchMarket: "US",
+      }),
+      new Apple({
+        countryCode: "us",
+        imageWidth: 600,
+        imageHeight: 900
+      }),
+      new Deezer({
+        playlistLimit: 20
       }),
     ],
   },

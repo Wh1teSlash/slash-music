@@ -21,6 +21,7 @@ module.exports = {
 
     const results = await client.kazagumo.search(focusedValue.value, {
       requester: interaction.user,
+      source: "youtube",
     });
 
     await interaction.respond(
@@ -66,6 +67,10 @@ module.exports = {
         source = "<:spotify2:1101763629633765427>";
       else if (result.tracks[0].sourceName === "youtube")
         source = "<:ytb:1101768846693634138>";
+      else if (result.tracks[0].sourceName === "apple")
+        source = "<:MusicApple:1217501064031637544>";
+      else if (result.tracks[0].sourceName === "deezer")
+        source = "<:deezer:1217503058855198771>";
 
       const trackEmbed = new EmbedBuilder()
         .setColor("Blurple")

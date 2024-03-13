@@ -8,6 +8,7 @@ module.exports = {
       const res = await player.search(search, { requester: requester });
       if (!res.tracks.length) return;
       await player.queue.add(res.tracks[2]);
+      await player.queue.add(res.tracks[3]);
     }
   },
 };

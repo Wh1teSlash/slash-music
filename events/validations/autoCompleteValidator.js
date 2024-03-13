@@ -1,4 +1,4 @@
-const getLocalCommands = require("../../utils/getLocalcommands");
+const getLocalCommands = require("../../utils/getLocalCommands.js");
 
 module.exports = async (client, interaction) => {
   if (!interaction.isAutocomplete()) return;

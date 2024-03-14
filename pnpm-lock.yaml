@@ -18,8 +18,8 @@ dependencies:
     specifier: ^3.0.1
     version: 3.0.1
   kazagumo-apple:
-    specifier: ^2.0.1
-    version: 2.0.1
+    specifier: ^2.0.2
+    version: 2.0.2
   kazagumo-deezer:
     specifier: ^2.0.2
     version: 2.0.2
@@ -275,8 +275,8 @@ packages:
     engines: {node: '>=12.0.0'}
     dev: false
 
-  /kazagumo-apple@2.0.1:
-    resolution: {integrity: sha512-synwAy0m0P/vxkwLO/a54yfh4eoI1bmXyJBtA4wXhPCdYFlYz7iM1k+5GobUcbSYliYADPul8F1I1NP0PsTevA==}
+  /kazagumo-apple@2.0.2:
+    resolution: {integrity: sha512-l7wDjJXU2aW4BBTNvy+bk850DrCCUXFbTOFOmkzpzJfUyWxNjSONzAAkNth5vEDYWBIbUZ8Nj36cemO35FO/wg==}
     dependencies:
       axios: 1.6.7
       kazagumo: 3.0.1

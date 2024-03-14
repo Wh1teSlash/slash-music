@@ -9,7 +9,7 @@
     "discord.js": "^14.14.1",
     "dotenv": "^16.4.1",
     "kazagumo": "^3.0.1",
-    "kazagumo-apple": "^2.0.1",
+    "kazagumo-apple": "^2.0.2",
     "kazagumo-deezer": "^2.0.2",
     "kazagumo-spotify": "^2.0.1",
     "mongoose": "^8.1.1",

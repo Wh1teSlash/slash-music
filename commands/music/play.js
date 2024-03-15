@@ -27,7 +27,9 @@ module.exports = {
     await interaction.respond(
       results.tracks.map((r) => ({
         name: `${
-          r.title.length > 100 ? r.title.slice(0, 97) + "..." : r.title
+          r.author + r.title.length > 55
+            ? r.title.slice(0, 51) + "..."
+            : r.title
         }`,
         value: r.uri,
       }))

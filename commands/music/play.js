@@ -21,7 +21,7 @@ module.exports = {
 
     const results = await client.kazagumo.search(focusedValue.value, {
       requester: interaction.user,
-      source: "youtube",
+      engine: "apple",
     });
 
     await interaction.respond(
@@ -49,7 +49,7 @@ module.exports = {
 
       let result = await client.kazagumo.search(query, {
         requester: interaction.user,
-        engine: "spotify",
+        engine: "apple",
       });
       if (!result.tracks.length)
         return interaction.reply({

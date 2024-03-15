@@ -114,7 +114,6 @@ module.exports = {
           embeds: [embed],
         })
         .then((x) => player.data.set("message", x));
-      let spotify = null;
     } else {
       client.channels.cache
         .get(player.textId)
@@ -123,7 +122,6 @@ module.exports = {
           components: [firstRow, secondRow],
         })
         .then((x) => player.data.set("message", x));
-      let image = null;
     }
   },
 };

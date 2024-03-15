@@ -88,7 +88,11 @@ module.exports = {
         .setFields([
           {
             name: "<:music:1100846700119195778> Track:",
-            value: `<:1_:1100848601808244789> **${result.tracks[0].author} - ${result.tracks[0].title}**`,
+            value: `<:1_:1100848601808244789> **${result.tracks[0].title}**`,
+          },
+          {
+            name: "<:author:1111562407425347604> Author",
+            value: `<:1_:1100848601808244789> **${result.tracks[0].author}**`,
           },
           {
             name: "<:friends:1100846696952508446> Requested by:",

@@ -10,4 +10,15 @@ module.exports = async (client) => {
   if (await mongoose.connect(mongoURI)) {
     console.log(`Connected to the MongoDB database.`.green);
   }
+
+  setTimeout(() => {
+    client.user.setPresence({
+      activities: [
+        {
+          name: `${client.guilds.cache.size} Guild's`,
+          type: 2,
+        },
+      ],
+    });
+  }, 30_000);
 };

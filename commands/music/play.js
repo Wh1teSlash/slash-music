@@ -27,9 +27,9 @@ module.exports = {
     await interaction.respond(
       results.tracks.map((r) => ({
         name: `${
-          r.author + r.title.length > 55
-            ? r.title.slice(0, 51) + "..."
-            : r.title
+          r.author.length + r.title.length > 100
+            ? r.title.slice(0, 97) + "..."
+            : r.author + " - " + r.title
         }`,
         value: r.uri,
       }))
@@ -73,6 +73,8 @@ module.exports = {
         source = "<:MusicApple:1217501064031637544>";
       else if (result.tracks[0].sourceName === "deezer")
         source = "<:deezer:1217503058855198771>";
+      else if (result.tracks[0].sourceName === "soundcloud")
+        source = "<:soundcloud:1218142801204875316>";
 
       const trackEmbed = new EmbedBuilder()
         .setColor("Blurple")

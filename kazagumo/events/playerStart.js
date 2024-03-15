@@ -20,6 +20,8 @@ module.exports = {
       source = "<:MusicApple:1217501064031637544>";
     else if (track.sourceName === "deezer")
       source = "<:deezer:1217503058855198771>";
+    else if (track.sourceName === "soundcloud")
+      source = "<:soundcloud:1218142801204875316>";
 
     if (player.loop === "none") looped = "Playing";
     else looped = `Looped: ${player.loop}`;
@@ -36,7 +38,11 @@ module.exports = {
       .setFields([
         {
           name: "<:music:1100846700119195778> Track:",
-          value: `<:1_:1100848601808244789> **${track.author} - ${track.title}**`,
+          value: `<:1_:1100848601808244789> **${track.title}**`,
+        },
+        {
+          name: "<:author:1111562407425347604> Author",
+          value: `<:1_:1100848601808244789> **${track.author}**`,
         },
         {
           name: "<:friends:1100846696952508446> Requested by:",

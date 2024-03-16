@@ -73,10 +73,11 @@ client.on("voiceStateUpdate", async (oldState, newState) => {
     newState.channelId == null &&
     newState.member?.user.id === client.user?.id
   ) {
-    player.voiceId !== null ? player.destroy() : true;
     const message = player.data.get("message");
 
     if (message) message.delete().catch((error) => null);
+
+    player.voiceId !== null ? player.destroy() : true;
   }
 });
 

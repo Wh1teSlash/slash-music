@@ -75,10 +75,6 @@ client.on("voiceStateUpdate", async (oldState, newState) => {
   ) {
     player.voiceId !== null ? player.destroy() : true;
   }
-
-  if (oldState.member.id === client.user.id) {
-    if (oldState.channelId && !newState.channelId) player.destroy();
-  }
 });
 
 module.exports = client;

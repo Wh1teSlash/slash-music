@@ -1,4 +1,6 @@
 module.exports = async (client, oldState, newState) => {
+  if (!newState.guild) return;
+
   const player = client.kazagumo.getPlayer(newState.guild.id);
 
   if (!player) return;

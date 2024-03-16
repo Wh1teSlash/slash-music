@@ -21,15 +21,12 @@ module.exports = {
 
     const results = await client.kazagumo.search(focusedValue.value, {
       requester: interaction.user,
-      engine: "apple",
     });
 
     await interaction.respond(
       results.tracks.map((r) => ({
         name: `${
-          r.author.length + r.title.length > 100
-            ? r.title.slice(0, 97) + "..."
-            : r.author + " - " + r.title
+          r.title.length > 100 ? r.title.slice(0, 97) + "..." : r.title
         }`,
         value: r.uri,
       }))
@@ -51,7 +48,6 @@ module.exports = {
 
       let result = await client.kazagumo.search(query, {
         requester: interaction.user,
-        engine: "apple",
       });
       if (!result.tracks.length)
         return interaction.reply({

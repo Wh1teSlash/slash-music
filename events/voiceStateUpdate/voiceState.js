@@ -17,10 +17,7 @@ module.exports = async (oldState, newState) => {
   if (
     oldState.member.user.bot &&
     oldState.member.user.id === client.user.id &&
-    oldState.channelId
-  ) {
-    if (!newState.channelId) {
-      player.destroy();
-    }
-  }
+    !newState.channelId
+  )
+    player.destroy();
 };

@@ -1,5 +1,4 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
-const { trusted } = require("mongoose");
 const ms = require("ms");
 
 module.exports = {
@@ -9,7 +8,7 @@ module.exports = {
     .addStringOption((option) =>
       option
         .setName("query")
-        .setDescription("Paste query or link to the song.")
+        .setDescription("Paste query or link of the song.")
         .setRequired(true)
         .setAutocomplete(true)
     )

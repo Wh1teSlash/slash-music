@@ -63,3 +63,5 @@ client.kazagumo = kazagumo;
 Promise.all([kazagumoHandler(client, kazagumo), eventHandler(client)]);
 
 client.login(process.env.TOKEN);
+
+module.exports = client;

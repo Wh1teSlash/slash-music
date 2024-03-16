@@ -1,5 +1,7 @@
-module.exports = async (client, oldState, newState) => {
-  if (!newState.guild) return;
+const client = require("../../index.js");
+
+module.exports = async (oldState, newState) => {
+  if (!newState?.guild) return;
 
   const player = client.kazagumo.getPlayer(newState.guild.id);
 

@@ -64,4 +64,21 @@ Promise.all([kazagumoHandler(client, kazagumo), eventHandler(client)]);
 
 client.login(process.env.TOKEN);
 
+client.on("voiceStateUpdate", async (oldState, newState) => {
+  const player = client.kazagumo.getPlayer(newState.guild.id);
+
+  if (!player) return;
+
+  if (
+    newState.channelId == null &&
+    newState.member?.user.id === client.user?.id
+  ) {
+    player.voiceId !== null ? player.destroy() : true;
+  }
+
+  if (oldState.member.id === client.user.id) {
+    if (oldState.channelId && !newState.channelId) player.destroy();
+  }
+});
+
 module.exports = client;

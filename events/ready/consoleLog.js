@@ -11,7 +11,7 @@ module.exports = async (client) => {
     console.log(`Connected to the MongoDB database.`.green);
   }
 
-  setTimeout(() => {
+  setInterval(() => {
     client.user.setPresence({
       activities: [
         {

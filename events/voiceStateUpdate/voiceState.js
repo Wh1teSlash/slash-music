@@ -1,0 +1,12 @@
+module.exports = async (client, oldState, newState) => {
+  const player = client.kazagumo.getPlayer(newState.guild.id);
+
+  if (!player) return;
+
+  if (
+    newState.channelId == null &&
+    newState.member?.user.id === client.user?.id
+  ) {
+    player.voiceId !== null ? player.destroy() : true;
+  }
+};

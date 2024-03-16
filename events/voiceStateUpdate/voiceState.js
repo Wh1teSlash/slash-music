@@ -14,6 +14,9 @@ module.exports = async (oldState, newState) => {
     player.voiceId !== null ? player.destroy() : true;
   }
 
-  if (oldState.member?.user?.id === client.user.id && !newState.channelId)
-    player.destroy();
+  if (newState.member.user.id === client.user.id) {
+    if (oldState.channelId && !newState.channelId) {
+      player.destroy();
+    }
+  }
 };

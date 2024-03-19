@@ -5,6 +5,7 @@
   "author": "WhiteSlash",
   "license": "MIT",
   "dependencies": {
+    "@execaman/lyricist": "^2.0.2",
     "colors": "^1.4.0",
     "discord.js": "^14.14.1",
     "dotenv": "^16.4.1",

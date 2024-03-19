@@ -32,9 +32,8 @@ module.exports = {
 
     const embed = new EmbedBuilder()
       .setColor("Blurple")
-      .setTitle(`${res.info[0].value} - ${res.song.title}`)
+      .setTitle(`${query}`)
       .setDescription(`${res.lyrics}`)
-      .setThumbnail(client.user.displayAvatarURL())
       .setTimestamp()
       .setFooter({
         text: `Requested by ${interaction.user.username}`,

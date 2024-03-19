@@ -31,7 +31,7 @@ module.exports = {
         ephemeral: true,
       });
 
-    player.seek(ms(time));
+    player.seek(ms(player.queue.durationLength + time));
 
     const embed = new EmbedBuilder()
       .setColor("Blurple")

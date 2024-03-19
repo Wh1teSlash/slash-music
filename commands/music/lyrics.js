@@ -4,7 +4,7 @@ const { Lyricist } = require("@execaman/lyricist");
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("lyrics")
-    .setDescription("Get lyrics of a song")
+    .setDescription("Get lyrics of a song.")
     .addStringOption((option) =>
       option
         .setName("query")
@@ -30,15 +30,21 @@ module.exports = {
         ephemeral: true,
       });
 
-    const songRes = await client.kazagumo.search(res.listen[0].stream, {
-      requester: interaction.user,
-    });
+    let thumbnail;
+
+    if (res.info) {
+      const songRes = await client.kazagumo.search(res.listen[0].stream, {
+        requester: interaction.user,
+      });
+
+      thumbnail = songRes.tracks[0].thumbnail;
+    }
 
     const embed = new EmbedBuilder()
       .setColor("Blurple")
       .setTitle(`${res.info[0].value} - ${res.song.title}`)
       .setDescription(`${res.lyrics}`)
-      .setThumbnail(songRes.tracks[0].thumbnail)
+      .setThumbnail(thumbnail ? thumbnail : client.user.displayAvatarURL())
       .setTimestamp()
       .setFooter({
         text: `Requested by ${interaction.user.username}`,

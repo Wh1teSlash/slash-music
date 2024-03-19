@@ -5,7 +5,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName("seek")
     .setDescription("Seek to a specific time")
-    .addIntegerOption((option) =>
+    .addStringOption((option) =>
       option
         .setName("time")
         .setDescription("The time to seek to. Ex: 10s")
@@ -23,7 +23,7 @@ module.exports = {
         ephemeral: true,
       });
 
-    const time = interaction.options.getInteger("time");
+    const time = interaction.options.getString("time");
 
     if (time < 0 || time > player.queue.durationLength)
       return interaction.reply({

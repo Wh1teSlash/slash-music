@@ -35,7 +35,7 @@ module.exports = {
 
     const embed = new EmbedBuilder()
       .setColor("Blurple")
-      .setDescription(`\`✔\` Seeked to ${ms(time)}ms.`);
+      .setDescription(`\`✔\` Seeked to ${time}.`);
 
     await interaction.reply({ embeds: [embed], ephemeral: true });
   },
